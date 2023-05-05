@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';//add mano
@@ -21,6 +20,7 @@ import { HeaderComponent } from './component/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { UsuarioRegistrarComponent } from "./component/usuario/usuario-registrar/UsuarioRegistrarComponent";
 import { UsuarioIngresarComponent } from './component/usuario/usuario-ingresar/usuario-ingresar.component';
+import { UsuarioSobrenosotrosComponent } from './component/usuario/usuario-sobrenosotros/usuario-sobrenosotros.component';
 
 
 @NgModule({
@@ -29,7 +29,8 @@ import { UsuarioIngresarComponent } from './component/usuario/usuario-ingresar/u
     UsuarioComponent,
     HeaderComponent,
     UsuarioIngresarComponent,
-    UsuarioRegistrarComponent
+    UsuarioRegistrarComponent,
+    UsuarioSobrenosotrosComponent
   ],
   imports: [
     BrowserModule,

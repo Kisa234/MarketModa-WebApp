@@ -1,0 +1,37 @@
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+    Nombre
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+    {{ element.nombre }}
+    </mat-cell>
+    </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+    Email
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+    {{ element.email }}
+    </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="comentario">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Comentario
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+        {{ element.comentario }}
+    </mat-cell>
+</ng-container>
+    </mat-table>
+        <mat-paginator
+    #paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20]"
+    [showFirstLastButtons]="true"
+    >
+    </mat-paginator>
+</div>
