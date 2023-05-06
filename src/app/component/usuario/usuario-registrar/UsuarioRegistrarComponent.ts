@@ -33,7 +33,7 @@ export class UsuarioRegistrarComponent implements OnInit {
     });
   }
 
-  aceptar(): void {
+  Registarse(): void {
     this.usuario.id = this.form.value['id'];
     this.usuario.nameUsuario = this.form.value['nameUsuario'];
     this.usuario.emailUsuario = this.form.value['emailUsuario'];
@@ -43,7 +43,7 @@ export class UsuarioRegistrarComponent implements OnInit {
     this.usuario.countryUsuario = this.form.value['countryUsuario'];
     if (this.form.value['nameUsuario'].length > 0 &&
       this.form.value['emailUsuario'].length > 0) {
-      this.UsuarioService.insert(this.usuario).subscribe((data) => this.router.navigate(['Iniciar Sesion']).then(() => {
+      this.UsuarioService.insert(this.usuario).subscribe((data) => this.router.navigate(['IniciarSesion']).then(() => {
         window.location.reload();
       })
       );

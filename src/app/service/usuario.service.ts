@@ -10,8 +10,14 @@ const baseUrl = enviroment.base;
 })
 export class UsuarioService {
   private url = `${baseUrl}/usuarios`;
+
   private listaCambio = new Subject<Usuario[]>();
   constructor(private http: HttpClient) {}
+
+  listId(id:number){
+    return this.http.get<Usuario>(`${this.url}/${id}`);
+  }
+
   list(): Observable<any> {
     console.log(this.url);
     return this.http.get<Usuario[]>(this.url);

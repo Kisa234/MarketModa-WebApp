@@ -21,6 +21,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { UsuarioRegistrarComponent } from "./component/usuario/usuario-registrar/UsuarioRegistrarComponent";
 import { UsuarioIngresarComponent } from './component/usuario/usuario-ingresar/usuario-ingresar.component';
 import { UsuarioSobrenosotrosComponent } from './component/usuario/usuario-sobrenosotros/usuario-sobrenosotros.component';
+import { PaginaComponent } from './component/pagina/pagina.component';
+import { UsuarioMiperfilComponent } from './component/usuario/usuario-miperfil/usuario-miperfil.component';
+import { UsuarioMisdisenosComponent } from './component/usuario/usuario-misdisenos/usuario-misdisenos.component';
+import { PaginaMarketplaceComponent } from './component/pagina/pagina-marketplace/pagina-marketplace.component';
+import { UsuarioNuevodisenoComponent } from './component/usuario/usuario-nuevodiseno/usuario-nuevodiseno.component';
+
 
 
 @NgModule({
@@ -30,7 +36,13 @@ import { UsuarioSobrenosotrosComponent } from './component/usuario/usuario-sobre
     HeaderComponent,
     UsuarioIngresarComponent,
     UsuarioRegistrarComponent,
-    UsuarioSobrenosotrosComponent
+    UsuarioSobrenosotrosComponent,
+    PaginaComponent,
+    UsuarioMiperfilComponent,
+    UsuarioMisdisenosComponent,
+    PaginaMarketplaceComponent,
+    UsuarioNuevodisenoComponent
+    
   ],
   imports: [
     BrowserModule,
