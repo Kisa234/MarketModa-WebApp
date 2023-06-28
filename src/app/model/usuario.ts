@@ -6,4 +6,5 @@ export class Usuario {
   birthDateUsuario: Date = new Date(Date.now());
   phoneNumberUsuario: string = '';
   countryUsuario: string = '';
+  imagen: string=""
 }

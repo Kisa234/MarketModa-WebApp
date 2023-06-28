@@ -1,1 +1,23 @@
-<p>usuario-misdisenos works!</p>
+
+<body>
+  <div class="container">
+    <div *ngIf="prendas && prendas.length > 0" class="container">
+      <div class="card" *ngFor="let prenda of prendas">
+        <div class="card-content" [attr.data-prenda-id]="prenda.id" (click)="navigateToDiseno($event)">
+          <div class="card-img-container">
+            <img class="card-img" [src]="prenda.imagen || ''" alt="Imagen de la prenda">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ prenda.titulo }}</h5>
+            <p class="card-text"><strong>Tipo:</strong> {{ prenda.tipo }}</p>
+            <p class="card-text">{{ prenda.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="prendas && prendas.length === 0" class="container">
+      <p>No tienes prendas actualmente</p>
+    </div>
+  </div>
+</body>

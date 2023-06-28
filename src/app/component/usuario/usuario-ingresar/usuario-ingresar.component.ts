@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-usuario-ingresar',
@@ -10,42 +11,42 @@ import { UsuarioService } from 'src/app/service/usuario.service';
   styleUrls: ['./usuario-ingresar.component.css'],
 })
 export class UsuarioIngresarComponent {
-  mensaje: any;
-  form: FormGroup = new FormGroup({});
-  Usuario: Usuario = new Usuario();
-  id: number = 0;
-  edicion: boolean = false; //no es edicion
+  form: FormGroup = new FormGroup({
+    emailUsuario: new FormControl('', [Validators.required]),
+    passwordUsuario: new FormControl('', [Validators.required])
+  });
+
+  usuarios: Usuario[] = [];
+  mensaje: string = '';
 
   constructor(
-    private UsuarioService: UsuarioService,
+    private usuarioService: UsuarioService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
-  }
-
-  ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.Init();
-    });
-  this.form = new FormGroup({
-    emailUsuario: new FormControl(),
-    passwordUsuario: new FormControl(),
-  });
-  }
-  Init() {
-    if (this.edicion) {
-      this.UsuarioService.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          id: new FormControl(data.id),
-          nameUsuario: new FormControl(data.nameUsuario),
-          emailUsuario: new FormControl(data.emailUsuario),
-          passwordUsuario: new FormControl(data.passwordUsuario),
+  ) {}
+  
+  IniciarSesion(): void {
+    const email = this.form.get('emailUsuario')?.value;
+    const password = this.form.get('passwordUsuario')?.value;
+  
+    this.usuarioService.list().subscribe((usuarios) => {
+      this.usuarios = usuarios;
+  
+      const usuario = this.usuarios.find(
+        (u) => u.emailUsuario === email && u.passwordUsuario === password
+      );
+  
+      if (usuario) {
+        this.mensaje = 'Inicio de sesión exitoso';
+        localStorage.setItem('userId', usuario.id.toString());
+        timer(2000).subscribe(() => {
+          this.router.navigate(['/Inicio']).then(() => {
+            window.location.reload();
+          });
         });
-      });
-    }
+      } else {
+        this.mensaje = 'Usuario y/o contraseña incorrectos';
+      }
+    });
   }
-  IniciarSesion(): void {}
-
-  }
+}

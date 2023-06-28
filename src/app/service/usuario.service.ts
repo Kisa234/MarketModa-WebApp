@@ -4,6 +4,7 @@ import { enviroment } from 'src/environments/environment';
 import { Usuario } from '../model/usuario';
 import { Observable, Subject, map } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+
 const baseUrl = enviroment.base;
 @Injectable({
   providedIn: 'root',
@@ -30,5 +31,9 @@ export class UsuarioService {
   }
   getList() {
     this.listaCambio.asObservable();
+  }
+  getUsuario(id: number): Observable<Usuario> {
+    const url = `${this.url}/${id}`;
+    return this.http.get<Usuario>(url);
   }
 }

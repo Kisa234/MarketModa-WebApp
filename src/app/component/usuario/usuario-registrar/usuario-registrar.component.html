@@ -13,11 +13,7 @@
 
     </div>
     <form [formGroup]="form" (submit)="Registarse()">
-      <mat-form-field class="example-full-width">
-        <mat-label>Código</mat-label>
-        <input matInput required placeholder="Código" formControlName="id">
-      </mat-form-field>
-      <br>
+      
       <mat-form-field class="example-full-width">
         <mat-label>Name</mat-label>
         <input matInput required placeholder="Name" formControlName="nameUsuario">
@@ -30,8 +26,9 @@
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput required placeholder="Password" formControlName="passwordUsuario">
+        <input matInput required placeholder="Password" formControlName="passwordUsuario" type="password">
       </mat-form-field>
+      
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Birthday</mat-label>
@@ -53,7 +50,7 @@
       </mat-form-field>
       <br>
       <button mat-raised-button type="submit" color="primary">Registarse</button>
-      <button mat-raised-button color="warn" routerLink="">Cancelar</button>
+      <button mat-raised-button color="warn" routerLink="/IniciarSesion">Cancelar</button>
       <p>{{mensaje}}</p>
 
     </form>

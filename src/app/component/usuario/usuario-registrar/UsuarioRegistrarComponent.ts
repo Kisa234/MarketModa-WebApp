@@ -4,7 +4,7 @@ import { Usuario } from 'src/app/model/usuario';
 import * as moment from 'moment';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Router } from '@angular/router';
-
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'usuario-registrar',
@@ -12,18 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./usuario-registrar.component.css'],
 })
 export class UsuarioRegistrarComponent implements OnInit {
-
   form: FormGroup = new FormGroup({});
   usuario: Usuario = new Usuario();
   mensaje: string = '';
   maxFecha: Date = moment().add(1, 'days').toDate();
 
-  constructor(private UsuarioService: UsuarioService, private router: Router) {
-  }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      id: new FormControl(),
       nameUsuario: new FormControl(),
       emailUsuario: new FormControl(),
       passwordUsuario: new FormControl(),
@@ -34,22 +31,65 @@ export class UsuarioRegistrarComponent implements OnInit {
   }
 
   Registarse(): void {
-    this.usuario.id = this.form.value['id'];
-    this.usuario.nameUsuario = this.form.value['nameUsuario'];
-    this.usuario.emailUsuario = this.form.value['emailUsuario'];
-    this.usuario.passwordUsuario = this.form.value['passwordUsuario'];
-    this.usuario.birthDateUsuario = this.form.value['birthDateUsuario'];
-    this.usuario.phoneNumberUsuario = this.form.value['phoneNumberUsuario'];
-    this.usuario.countryUsuario = this.form.value['countryUsuario'];
-    if (this.form.value['nameUsuario'].length > 0 &&
-      this.form.value['emailUsuario'].length > 0) {
-      this.UsuarioService.insert(this.usuario).subscribe((data) => this.router.navigate(['IniciarSesion']).then(() => {
-        window.location.reload();
-      })
-      );
-    } else {
-      this.mensaje = 'Agregue los campos omitidos.';
-    }
-  }
+    // Obtener los datos del formulario
+    const nameUsuario = this.form.value['nameUsuario'];
+    const emailUsuario = this.form.value['emailUsuario'];
+    const passwordUsuario = this.form.value['passwordUsuario'];
+    const birthDateUsuario = this.form.value['birthDateUsuario'];
+    const phoneNumberUsuario = this.form.value['phoneNumberUsuario'];
+    const countryUsuario = this.form.value['countryUsuario'];
 
+    // Verificar si algún campo está vacío
+    if (
+
+      !nameUsuario ||
+      !emailUsuario ||
+      !passwordUsuario ||
+      !birthDateUsuario ||
+      !phoneNumberUsuario ||
+      !countryUsuario
+    ) {
+      this.mensaje = 'Por favor, complete todos los campos del formulario.';
+      return;
+    }
+
+    // Verificar si ya existe un usuario con el mismo correo electrónico, número de teléfono o nombre de usuario
+    this.usuarioService.list().subscribe((usuarios: Usuario[]) => {
+      const usuarioExistente = usuarios.find(
+        (usuario) =>
+          usuario.emailUsuario === emailUsuario ||
+          usuario.phoneNumberUsuario === phoneNumberUsuario ||
+          usuario.nameUsuario === nameUsuario
+      );
+
+      if (usuarioExistente) {
+        this.mensaje = 'El correo electrónico, número de teléfono o nombre de usuario ya están registrados.';
+      } else {
+        // Obtener el último ID existente
+        const lastId = Math.max(...usuarios.map((usuario) => usuario.id));
+        const nuevoUsuario: Usuario = {
+          id: lastId + 1,
+          nameUsuario: nameUsuario,
+          birthDateUsuario: birthDateUsuario,
+          emailUsuario: emailUsuario,
+          passwordUsuario: passwordUsuario,
+          phoneNumberUsuario: phoneNumberUsuario,
+          countryUsuario: countryUsuario,
+          imagen: ""
+        };
+
+        // Agregar el nuevo usuario utilizando el servicio
+        this.usuarioService.insert(nuevoUsuario).subscribe(() => {
+          this.mensaje = 'Usuario registrado exitosamente.';
+          timer(2000).subscribe(() => {
+            this.router.navigate(['IniciarSesion']).then(() => {
+              window.location.reload();
+            });
+          });
+        });
+      }
+    });
+    
+  }
+  
 }

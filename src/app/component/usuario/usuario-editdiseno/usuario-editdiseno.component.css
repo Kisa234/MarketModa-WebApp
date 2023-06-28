@@ -1,44 +1,41 @@
 .container {
-  display: flex;
-  margin-top: 8vh;
-}
-
-.logo-container {
-  background-color: #f3ece3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo-container {
-  background-color: #f3ece3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px; /* Aumenta el padding para agregar espacio alrededor del upload-form */
-}
-
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Cambia 'height' por 'min-height' */
-  margin: 0;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  margin-bottom: 0; /* Elimina el margen inferior */
-}
-
-
+    display: flex;
+    margin-top: 8vh;
+  }
+  
+  .logo-container {
+    background-color: #f3ece3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-container {
+    background-color: #f3ece3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px; /* Aumenta el padding para agregar espacio alrededor del upload-form */
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Cambia 'height' por 'min-height' */
+    margin: 0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0; /* Elimina el margen inferior */
+  }
   
   mat-form-field {
     width: 100%;
@@ -51,24 +48,17 @@ form {
     color: #555;
   }
   
-  mat-hint {
+  .mat-hint {
     font-size: 12px;
     color: #999;
   }
   
-  input[type="submit"] {
-    width: 100%;
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #2196F3;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
+  textarea.mat-input-element {
+    height: 150px; /* Ajusta la altura según tus necesidades */
+    resize: vertical; /* Permite redimensionar verticalmente */
   }
   
+  input[type="submit"],
   button[type="button"] {
     width: 100%;
     margin-top: 10px;
@@ -82,10 +72,22 @@ form {
     cursor: pointer;
   }
   
+  input[type="submit"] {
+    background-color: #2196F3;
+  }
+  
   p {
     margin-top: 20px;
     font-size: 14px;
     color: #999;
+  }
+  
+  .mat-stepper-vertical {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
   }
   .upload-form {
     display: flex;
@@ -93,6 +95,7 @@ form {
     align-items: center;
     margin-top: 20px; /* Ajusta el margen superior según tus necesidades */
   }
+  
   .file-label {
     position: relative;
     width: 400px;
@@ -167,6 +170,6 @@ form {
     margin-bottom: 10px;
   }
   
-  .logo-container div form{
-    margin: 50px;
-  }
+  
+  
+  

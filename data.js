@@ -1,161 +1,148 @@
 module.exports = function () {
-
   var data = {
-
     usuarios: [
-
       {
-
-        id:1,
-
+        id: 1,
         nameUsuario: "Luis Pérez Reyes",
-
         birthDateUsuario: "2000-09-10",
-
-        emailUsuario:"lperez@gmail.com",
-
-        passwordUsuario:"123456789",
-
+        emailUsuario: "lperez@gmail.com",
+        passwordUsuario: "123456789",
         phoneNumberUsuario: "948548645",
-
-        countryUsuario: "Perú"
-
+        countryUsuario: "Perú",
+        imagen: "src/assets/pedro-perfil.jpg"
       },
-
       {
-
-        id:2,
-
+        id: 2,
         nameUsuario: "Ana Díaz Reyes",
-
         birthDateUsuario: "1980-10-10",
-
-        emailUsuario:"adiaz@gmail.com",
-
-        passwordUsuario:"5473829",
-
+        emailUsuario: "adiaz@gmail.com",
+        passwordUsuario: "5473829",
         phoneNumberUsuario: "965748567",
-
-        countryUsuario: "Chile"
-
+        countryUsuario: "Chile",
+        imagen: "src/assets/ana-perfil.jpg"
       },
-
       {
-
-        id:3,
-
+        id: 3,
         nameUsuario: "Gerardo Santillán Reyes",
-
         birthDateUsuario: "2002-06-05",
-
-        emailUsuario:"gsreyes@gmail.com",
-
-        passwordUsuario:"97vfun434",
-
+        emailUsuario: "gsreyes@gmail.com",
+        passwordUsuario: "97vfun434",
         phoneNumberUsuario: "965783922",
-
-        countryUsuario: "Estados Unidos"
-
+        countryUsuario: "Estados Unidos",
+        imagen: "src/assets/gerardo-perfil.jpg"
       },
-
       {
-
-        id:4,
-
+        id: 4,
         nameUsuario: "Juana Pérez Reyes",
-
         birthDateUsuario: "2000-09-10",
-
-        emailUsuario:"jperez@gmail.com",
-
-        passwordUsuario:"jsssk9274ma",
-
+        emailUsuario: "jperez@gmail.com",
+        passwordUsuario: "jsssk9274ma",
         phoneNumberUsuario: "988563917",
-
-        countryUsuario: "Italia"
-
+        countryUsuario: "Italia",
+        imagen: "src/assets/juana-perfil.jpg"
       },
-
       {
-
-        id:5,
-
+        id: 5,
         nameUsuario: "Pedro Carpio",
-
         birthDateUsuario: "2000-19-11",
-
-        emailUsuario:"jcarpio@gmail.com",
-
-        passwordUsuario:"bdwojnj382",
-
+        emailUsuario: "jcarpio@gmail.com",
+        passwordUsuario: "bdwojnj382",
         phoneNumberUsuario: "988673541",
-
-        countryUsuario: "Perú"
-
-      },
-
-
-
+        countryUsuario: "Perú",
+        imagen: "src/assets/pedro-perfil.jpg"
+      }
     ],
-
-    comentarios: [
-
+    prendas: [
       {
-
-        nombre: "Luis Pérez Reyes",
-
-        comentario: "La página web es fácil de navegar y encontrar lo que estoy buscando.",
-
-        email:"lperez@gmail.com",
-
+        id: 1,
+        idCreador: 1,
+        imagen: "src/assets/luis-prenda1.jpg",
+        titulo: "Elegante Vestido Azul",
+        descripcion: "Vestido elegante de color azul.",
+        tipo: "Vestidos"
       },
-
       {
-
-        nombre: "Luis Pérez Reyes",
-
-        comentario: "Sería útil agregar una sección de reseñas de los productos para tener una mejor idea de la calidad de la ropa.",
-
-        email:"lperez@gmail.com",
-
+        id: 2,
+        idCreador: 1,
+        imagen: "src/assets/luis-prenda2.jpg",
+        titulo: "Camisa a Rayas",
+        descripcion: "Camisa de mangas largas con rayas.",
+        tipo: "Camisas"
       },
-
       {
-
-        nombre: "Luis Pérez Reyes",
-
-        comentario: "La fotografía de los productos es excelente, pero sería útil agregar fotografías adicionales desde diferentes ángulos.",
-
-        email:"lperez@gmail.com",
-
+        id: 3,
+        idCreador: 2,
+        imagen: "src/assets/ana-prenda1.jpg",
+        titulo: "Sandalia de Verano",
+        descripcion: "Sandalia cómoda para usar en el verano.",
+        tipo: "Zapatos"
       },
-
       {
-
-        nombre: "Luis Pérez Reyes",
-
-        comentario: "La información sobre el proceso de envío y devolución podría ser más clara y fácil de encontrar.",
-
-        email:"lperez@gmail.com",
-
-        },
-
+        id: 4,
+        idCreador: 2,
+        imagen: "src/assets/ana-prenda2.jpg",
+        titulo: "Pantalones Vaqueros",
+        descripcion: "Pantalones de mezclilla en estilo vaquero.",
+        tipo: "Pantalones"
+      },
       {
-
-      nombre: "Luis Pérez Reyes",
-
-        comentario: "Sería interesante agregar una sección de Outfits del día o Estilos sugeridos para inspirar a los compradores a combinar diferentes prendas.",
-
-        email:"lperez@gmail.com",
-
-      } 
-
+        id: 5,
+        idCreador: 3,
+        imagen: "src/assets/gerardo-prenda1.jpg",
+        titulo: "Chaqueta de Cuero",
+        descripcion: "Chaqueta de cuero genuino para el invierno.",
+        tipo: "Chaquetas"
+      },
+      {
+        id: 6,
+        idCreador: 3,
+        imagen: "src/assets/gerardo-prenda2.jpg",
+        titulo: "Gorra Deportiva",
+        descripcion: "Gorra deportiva para protegerte del sol.",
+        tipo: "Accesorios"
+      },
+      {
+        id: 7,
+        idCreador: 3,
+        imagen: "src/assets/gerardo-prenda3.jpg",
+        titulo: "Vestido Floral",
+        descripcion: "Vestido con estampado floral perfecto para ocasiones especiales.",
+        tipo: "Vestidos"
+      },
+      {
+        id: 8,
+        idCreador: 4,
+        imagen: "src/assets/juana-prenda1.jpg",
+        titulo: "Falda Plisada",
+        descripcion: "Falda plisada de colores vibrantes.",
+        tipo: "Faldas"
+      },
+      {
+        id: 9,
+        idCreador: 5,
+        imagen: "src/assets/pedro-prenda1.jpg",
+        titulo: "Zapatos de Cuero",
+        descripcion: "Zapatos de cuero elegantes y duraderos.",
+        tipo: "Zapatos"
+      },
+      {
+        id: 10,
+        idCreador: 5,
+        imagen: "src/assets/pedro-prenda2.jpg",
+        titulo: "Camiseta Estampada",
+        descripcion: "Camiseta con un estampado único y llamativo.",
+        tipo: "Camisetas"
+      },
+      {
+        id: 11,
+        idCreador: 5,
+        imagen: "src/assets/pedro-prenda3.jpg",
+        titulo: "Pantalones de Jogging",
+        descripcion: "Pantalones cómodos para hacer ejercicio o relajarse en casa.",
+        tipo: "Pantalones"
+      }
     ]
+  };
 
-  }
-
-  return data
-
-
-
-}
+  return data;
+};
