@@ -10,6 +10,7 @@ const baseUrl = enviroment.base;
   providedIn: 'root',
 })
 export class PrendaService {
+  
   private url = `${baseUrl}/prendas`;
 
   private prendas: Prenda[];
@@ -43,5 +44,9 @@ export class PrendaService {
   obtenerPrendaPorId(id: number): Observable<Prenda> {
     const url = `${this.url}/${id}`;
     return this.http.get<Prenda>(url);
+  }
+  listarPrendasPorTitulo(titulo: string): Observable<Prenda[]> {
+    // Filtrar las prendas por título
+    return this.http.get<Prenda[]>(`${this.url}?titulo=${encodeURIComponent(titulo)}`);
   }
 }

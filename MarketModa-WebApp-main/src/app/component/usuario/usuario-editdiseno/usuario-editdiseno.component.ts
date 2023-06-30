@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Prenda } from 'src/app/model/prenda';
 import { PrendaService } from 'src/app/service/prenda.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-usuario-editdiseno',
@@ -17,6 +18,7 @@ export class UsuarioEditdisenoComponent implements OnInit, OnDestroy {
   id: number = 0;
   edicion: boolean = false;
   prenda: Prenda;
+  router: any;
 
   constructor(
     private http: HttpClient,
@@ -55,9 +57,46 @@ export class UsuarioEditdisenoComponent implements OnInit, OnDestroy {
     }
   }
 
-  aceptar() {
-    // Lógica para guardar los datos del formulario
+  aceptar() : void {
+    const Titulo = this.form.value['Titulo'];
+    const Tipo = this.form.value['Tipo'];
+    const Descripcion = this.form.value['Descripcion'];
+  
+    // Verificar si algún campo está vacío
+    if (!Titulo || !Tipo || !Descripcion) {
+      this.mensaje = 'Por favor, complete todos los campos del formulario.';
+      return;
+    }
+  
+    // Crear el objeto Prenda con los datos actualizados
+    const prendaActualizada: Prenda = {
+      id: this.prenda.id,
+      idCreador: this.prenda.idCreador,
+      imagen: this.prenda.imagen,
+      titulo: Titulo,
+      descripcion: Descripcion,
+      tipo: Tipo,
+    };
+  
+    if (this.edicion) {
+      // If in edit mode, update the existing prenda
+      this.prendaService.editarPrenda(this.id, prendaActualizada).subscribe(
+        (response) => {
+          this.mensaje = 'Prenda actualizada correctamente';
+          timer(2000).subscribe(() => {
+            this.router.navigate(['/MisDisenos']).then(() => {
+              window.location.reload();
+            });
+          });
+        },
+        (error) => {
+          this.mensaje = 'Error al actualizar la prenda';
+        }
+      );
+    }
   }
+  
+
   loadUserImage(): void {
     if (this.id !== 0) {
       this.prendaService.obtenerPrendaPorId(this.id).subscribe((data: Prenda) => {

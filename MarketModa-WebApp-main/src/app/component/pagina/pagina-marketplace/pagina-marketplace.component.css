@@ -14,7 +14,7 @@ body {
   margin-left: 6vh;
   margin-right: 6vh;
   height: calc(100vh - 10vh); /* Adjust the height of the container to fit within the remaining viewport height */
-  overflow: hidden; /* Disable scrolling within the container */
+  overflow: auto; /* Disable scrolling within the container */
 }
 
 .card {

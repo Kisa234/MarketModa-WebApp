@@ -32,6 +32,7 @@ import { UsuarioService } from './service/usuario.service';
 import { UsuarioEditdisenoComponent } from './component/usuario/usuario-editdiseno/usuario-editdiseno.component';
 import {MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule, Routes } from '@angular/router';
 
 
 
@@ -74,6 +75,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatStepperModule,
     MatIconModule,
     MatChipsModule,
+    RouterModule
     
     
   ],

@@ -91,5 +91,6 @@ export class UsuarioRegistrarComponent implements OnInit {
     });
     
   }
+ 
   
 }

@@ -11,7 +11,8 @@
 <body>
     <div class="container">
         <div class="logo-container">
-          
+
+        <form [formGroup]="form" >
           <div class="upload-form">
             <label for="fileInput" class="file-label">
               <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
@@ -24,10 +25,10 @@
             <button class="submit-button" (click)="uploadFile()">Subir imagen</button>
             <button class="delete-button" *ngIf="previewImage" (click)="deleteImage()">Eliminar imagen</button>
           </div>
-          
+        </form>
 
         </div>
-        <form  (submit)="aceptar()">
+        <form  [formGroup]="form"  (submit)="aceptar()">
           <mat-form-field class="example-full-width">
             <mat-label>Titulo</mat-label>
             <input matInput required placeholder="Titulo" formControlName="Titulo">
@@ -46,7 +47,6 @@
           </mat-form-field>
 
           <br>
-          <button mat-raised-button type="submit" color="primary">Editar</button>
           <button mat-raised-button type="submit" color="primary">Guardar</button>
           <p>{{mensaje}}</p>
     
