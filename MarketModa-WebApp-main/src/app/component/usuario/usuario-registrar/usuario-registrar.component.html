@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <img src="../../../../assets/logo.jpg" alt="logo">
+
+    </div>
+    <form [formGroup]="form" (submit)="Registarse()">
+      
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput required placeholder="Name" formControlName="nameUsuario">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput required placeholder="Email" formControlName="emailUsuario">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput required placeholder="Password" formControlName="passwordUsuario" type="password">
+      </mat-form-field>
+      
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Birthday</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDateUsuario"
+        max="maxFecha">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Phone Number</mat-label>
+        <input matInput required placeholder="Phone Number" formControlName="phoneNumberUsuario">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Country</mat-label>
+        <input matInput required placeholder="Country" formControlName="countryUsuario">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit" color="primary">Registarse</button>
+      <button mat-raised-button color="warn" routerLink="/IniciarSesion">Cancelar</button>
+      <p>{{mensaje}}</p>
+
+    </form>
+  </div>
+</body>
+</html>

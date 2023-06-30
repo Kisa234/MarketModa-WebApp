@@ -1,0 +1,17 @@
+<body>
+  <div *ngIf="prendas && prendas.length > 0" class="container">
+    <div class="card" *ngFor="let prenda of prendas">
+      <div class="card-content" >
+        <div class="card-img-container">
+          <img class="card-img" [src]="prenda.imagen || ''" alt="Imagen de la prenda">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ prenda.titulo }}</h5>
+          <p class="card-text"><strong>Tipo:</strong> {{ prenda.tipo }}</p>
+          <p class="card-text">{{ prenda.descripcion }}</p>
+          <p class="card-text"><strong>Creador:</strong> {{ getNombreUsuario(prenda.idCreador) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

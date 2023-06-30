@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+          
+          <div class="upload-form">
+            <label for="fileInput" class="file-label">
+              <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
+              <div class="file-content">
+                <img *ngIf="previewImage" [src]="previewImage" alt="Vista previa de la imagen" class="preview-image">
+                <i class="file-icon fas fa-cloud-upload-alt"></i>
+              </div>
+            </label>
+            <span class="file-text">Haz clic o arrastra una imagen aquí</span>
+            <button class="submit-button" (click)="uploadFile()">Subir imagen</button>
+            <button class="delete-button" *ngIf="previewImage" (click)="deleteImage()">Eliminar imagen</button>
+          </div>
+          
+
+        </div>
+        <form [formGroup]="form" (submit)="aceptar()">
+          <mat-form-field class="example-full-width">
+            <mat-label>Titulo</mat-label>
+            <input matInput formControlName="Titulo" placeholder="Titulo">
+          </mat-form-field>
+          <br>
+          
+          <mat-form-field class="example-full-width">
+            <mat-label>Tipo</mat-label>
+            <input matInput formControlName="Tipo" placeholder="Tipo">
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput formControlName="Descripcion" placeholder="Descripcion"></textarea>
+          </mat-form-field>
+        
+          <br>
+          <button mat-raised-button type="submit" color="primary">Editar</button>
+          <button mat-raised-button type="submit" color="primary">Guardar</button>
+          <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>

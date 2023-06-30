@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <img src="../../../../assets/logo.jpg" alt="logo">
+
+    </div>
+    <form [formGroup]="form" (submit)="IniciarSesion()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput required placeholder="Email" formControlName="emailUsuario">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput required placeholder="Password" formControlName="passwordUsuario" type="password">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit" color="primary">Iniciar Sesion</button>
+      <button mat-raised-button routerLink="/Registrar">Registarse</button>
+      <p>{{mensaje}}</p>
+
+    </form>
+  </div>
+</body>
+</html>
